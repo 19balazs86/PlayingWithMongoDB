@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 using PlayingWithMongoDB.Model;
 using PlayingWithMongoDB.Mongo;
+using PlayingWithMongoDB.Repository;
 using PlayingWithMongoDB.Types;
 
 namespace PlayingWithMongoDB
@@ -23,12 +24,12 @@ namespace PlayingWithMongoDB
 
         MongoClient mongoClient = new MongoClient(connectionString);
         IMongoDatabase database = mongoClient.GetDatabase("TestDB");
-        
+
         // Put a break point here and F10.
         // --> Drop: Collection.
         database.DropCollection(collectionName);
 
-        IMongoRepository<Student> repository = new MongoRepository<Student>(database, collectionName);
+        IStudentRepository repository = new StudentRepository(database, collectionName);
 
         // --> Seed.
         await repository.InsertAsync(Student.GenerateStudents(100));
@@ -44,9 +45,11 @@ namespace PlayingWithMongoDB
 
         bool exists = await repository.ExistsAsync(s => s.Id == student.Id);
 
-        long count = await repository.CountAsync(s => s.Gender == Gender.Woman);
-
         IEnumerable<Student> physicists = await repository.FindAsync(s => s.Subjects.Contains("Physics"));
+
+        UpdateResult updateResult = await repository.RemoveSubjectAsync(physicists.First().Id, "Physics");
+
+        long count = await repository.CountAsync(s => s.Subjects.Contains("Physics"));
 
         // --> Paged query.
         PageQuery<Student> pageQuery = PageQuery<Student>
