@@ -47,7 +47,10 @@ namespace PlayingWithMongoDB
 
         IEnumerable<Student> physicists = await repository.FindAsync(s => s.Subjects.Contains("Physics"));
 
-        UpdateResult updateResult = await repository.RemoveSubjectAsync(physicists.First().Id, "Physics");
+        // ModifiedCount has to be 0.
+        UpdateResult updateResult = await repository.AddSubjectAsync(physicists.First().Id, "Physics");
+
+        updateResult = await repository.RemoveSubjectAsync(physicists.First().Id, "Physics");
 
         long count = await repository.CountAsync(s => s.Subjects.Contains("Physics"));
 
