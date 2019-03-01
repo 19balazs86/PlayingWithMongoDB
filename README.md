@@ -2,11 +2,13 @@
 
 This is a small .NET Core application, a playground to try out MongoDB. The example just gives you a subtle insight into MongoDB.
 
+#### Resources
+
 - [MongoDB 4.0 Manual](https://docs.mongodb.com/manual "MongoDB 4.0 Manual").
 - [MongoDB .NET Driver and Documentation](http://mongodb.github.io/mongo-csharp-driver "MongoDB .NET Driver and Documentation"). Installing the MongoDB.Driver package, you will get the MongoDB.Driver.Core and the MongoDB.Bson also.
 - [.NET Driver API Documentation](http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/R_Project_CSharpDriverDocs.htm ".NET Driver API Documentation") ([IMongoCollection](http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/T_MongoDB_Driver_IMongoCollection_1.htm "IMongoCollection"), [IFindFluent](http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/T_MongoDB_Driver_IFindFluent_2.htm "IFindFluent"), [IMongoQueryable](http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/T_MongoDB_Driver_Linq_IMongoQueryable_1.htm "IMongoQueryable")).
 
-What you can find:
+#### In the example you can find
 - Connect to MongoDB.
 - Repository with some basic CRUD operations.
 - Pagination solution with PageResult and PageQuery object.
@@ -27,7 +29,8 @@ PageQuery<Student, StudentDao> pageQuery = PageQuery<Student, StudentDao>
 PageResult<StudentDao> students = await repository.BrowseAsync(pageQuery);
 ```
 
-**Get MongoDB server:**
+#### Get MongoDB server
+
 - [MongoDB Community Server](https://www.mongodb.com/download-center/community "MongoDB Community Server").
 - [From docker hub](https://hub.docker.com/_/mongo "From docker hub").
 - Create MongoDB in the Cloud with Atlas: [Traversy Media (Brad) - video](https://www.youtube.com/watch?v=KKyag6t98g8 "Traversy Media (Brad) - video").
