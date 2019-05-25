@@ -23,11 +23,11 @@ PageQuery<Student> pageQuery = PageQuery<Student>
 PageResult<Student> students = await repository.BrowseAsync(pageQuery);
 ```
 ```csharp
-PageQuery<Student, StudentDao> pageQuery = PageQuery<Student, StudentDao>
+PageQuery<Student, StudentDto> pageQuery = PageQuery<Student, StudentDto>
     .Create(...).Filter(...).Sort(...)
-    .Project(s => new StudentDao { Id = s.Id, Name = s.Name });
+    .Project(s => new StudentDto { Id = s.Id, Name = s.Name });
 
-PageResult<StudentDao> students = await repository.BrowseAsync(pageQuery);
+PageResult<StudentDto> students = await repository.BrowseAsync(pageQuery);
 ```
 
 #### Get MongoDB server

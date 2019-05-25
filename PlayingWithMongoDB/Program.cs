@@ -70,19 +70,19 @@ namespace PlayingWithMongoDB
         } while (studentPageResult.HasNextPage);
 
         // --> Paged query with projection.
-        PageQuery<Student, StudentDao> pageQueryProjection = PageQuery<Student, StudentDao>
+        PageQuery<Student, StudentDto> pageQueryProjection = PageQuery<Student, StudentDto>
           .Create(page: 1, pageSize: 20)
           .Filter(s => s.Age >= 18 && s.Age <= 65)
           .Sort(sb => sb.Descending("$natural")) // https://docs.mongodb.com/manual/reference/glossary/#term-natural-order
-          .Project(s => new StudentDao { Id = s.Id, Name = s.Name, SubjectCount = s.Subjects.Count() });
+          .Project(s => new StudentDto { Id = s.Id, Name = s.Name, SubjectCount = s.Subjects.Count() });
 
-        PageResult<StudentDao> studentDaoPageResult = null;
+        PageResult<StudentDto> studentDtoPageResult = null;
 
         do
         {
-          studentDaoPageResult = await repository.BrowseAsync(pageQueryProjection);
+          studentDtoPageResult = await repository.BrowseAsync(pageQueryProjection);
           pageQueryProjection.Page++;
-        } while (studentDaoPageResult.HasNextPage);
+        } while (studentDtoPageResult.HasNextPage);
 
         deleteResult = await repository.DeleteAsync(s => s.Age < 5);
       }
