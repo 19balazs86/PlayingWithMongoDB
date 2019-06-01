@@ -18,7 +18,7 @@ namespace PlayingWithMongoDB
       try
       {
         const string collectionName = "TestCollection";
-        string connectionString     = Environment.GetEnvironmentVariable("MongoConnString");
+        string connectionString     = Environment.GetEnvironmentVariable("CUSTOMCONNSTR_MongoDB");
 
         ConventionRegistry.Register("Conventions", new MongoDbConventions(), _ => true);
 
