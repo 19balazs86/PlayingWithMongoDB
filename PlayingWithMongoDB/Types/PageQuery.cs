@@ -5,7 +5,8 @@ namespace PlayingWithMongoDB.Types
 {
   public sealed class PageQueryDefaults
   {
-    public const int PageSize = 20;
+    public const int PageSize    = 20;
+    public const int MaxPageSize = 50;
   }
 
   [DebuggerDisplay("Page = {Page}, PageSize = {PageSize}")]
@@ -24,7 +25,7 @@ namespace PlayingWithMongoDB.Types
     public int PageSize
     {
       get => _pageSize;
-      set => _pageSize = value <= 0 ? PageQueryDefaults.PageSize : value;
+      set => _pageSize = value <= 0 ? PageQueryDefaults.PageSize : value <= PageQueryDefaults.MaxPageSize ? value : PageQueryDefaults.MaxPageSize;
     }
     #endregion
 
