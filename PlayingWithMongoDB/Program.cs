@@ -19,6 +19,7 @@ namespace PlayingWithMongoDB
       {
         const string collectionName = "TestCollection";
         string connectionString     = Environment.GetEnvironmentVariable("CUSTOMCONNSTR_MongoDB");
+        //string connectionString     = "mongodb://admin:admin@localhost:27017";
 
         ConventionRegistry.Register("Conventions", new MongoDbConventions(), _ => true);
 
