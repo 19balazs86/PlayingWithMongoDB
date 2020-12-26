@@ -40,7 +40,7 @@ namespace PlayingWithMongoDB.Mongo
       => await _collection.InsertManyAsync(entities);
 
     public virtual async Task<ReplaceOneResult> UpdateOrInsertAsync(TEntity entity, bool isUpsert = false)
-      => await _collection.ReplaceOneAsync(e => e.Id == entity.Id, entity, new UpdateOptions { IsUpsert = isUpsert });
+      => await _collection.ReplaceOneAsync(e => e.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = isUpsert });
 
     public virtual async Task<DeleteResult> DeleteAsync(Guid id)
       => await _collection.DeleteOneAsync(e => e.Id == id);
