@@ -1,6 +1,6 @@
 # Playing with MongoDB
 
-This is a .NET application that serves as a playground to try out MongoDB. The example provides a subtle insight into MongoDB.
+This is a .NET console application that serves as a playground to try out MongoDB.
 
 #### Resources
 
@@ -10,9 +10,8 @@ This is a .NET application that serves as a playground to try out MongoDB. The e
 - [Dealing with DateTime](https://danielwertheim.se/mongodb-csharp-and-datetimes) 📓*Daniel Wertheim*
 
 #### In the example you can find
-- Connect to MongoDB.
-- Repository with some basic CRUD operations.
-- Pagination solution with `PageResult` and `PageQuery` object.
+- Repository with CRUD operations and example of using it
+- Pagination solution with `PageResult` and `PageQuery` object
 
 ```csharp
 PageQuery<Student> pageQuery = PageQuery<Student>
@@ -22,6 +21,7 @@ PageQuery<Student> pageQuery = PageQuery<Student>
 
 PageResult<Student> students = await repository.BrowseAsync(pageQuery);
 ```
+
 ```csharp
 PageQuery<Student, StudentDto> pageQuery = PageQuery<Student, StudentDto>
     .Create(...).Filter(...).Sort(...)

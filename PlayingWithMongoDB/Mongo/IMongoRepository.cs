@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using MongoDB.Driver;
 using PlayingWithMongoDB.Types;
+using System.Linq.Expressions;
 
-namespace PlayingWithMongoDB.Mongo
+namespace PlayingWithMongoDB.Mongo;
+
+public interface IMongoRepository<TEntity> where TEntity : IIdentifiable
 {
-  public interface IMongoRepository<TEntity> where TEntity : IIdentifiable
-  {
     Task<TEntity> GetAsync(Guid id);
 
     Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter);
@@ -32,5 +29,4 @@ namespace PlayingWithMongoDB.Mongo
     Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter);
 
     Task<long> CountAsync(Expression<Func<TEntity, bool>> filter);
-  }
 }

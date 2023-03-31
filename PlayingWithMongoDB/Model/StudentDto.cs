@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace PlayingWithMongoDB.Model;
 
-namespace PlayingWithMongoDB.Model
+public sealed class StudentDto
 {
-  public class StudentDto
-  {
     public Guid Id { get; set; }
     public string Name { get; set; }
     public int SubjectCount { get; set; }
-  }
 }

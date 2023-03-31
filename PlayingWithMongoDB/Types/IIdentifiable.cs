@@ -1,9 +1,6 @@
-using System;
+namespace PlayingWithMongoDB.Types;
 
-namespace PlayingWithMongoDB.Types
+public interface IIdentifiable
 {
-  public interface IIdentifiable
-    {
-         Guid Id { get; }
-    }
+     Guid Id { get; }
 }
