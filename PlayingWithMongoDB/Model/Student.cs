@@ -48,27 +48,22 @@ public sealed class Student : IIdentifiable
     }
 
     public static IEnumerable<Student> GenerateStudents(ushort count)
-      => Enumerable.Range(1, count).Select(i => GenerateStudent(i));
+    {
+        return Enumerable.Range(1, count).Select(i => GenerateStudent(i)).ToList();
+    }
 
     private static IEnumerable<string> shuffleSubjects()
     {
         var list = new List<string>(_subjects);
 
-        int n = list.Count;
-
-        while (n > 1)
+        for (int n = list.Count - 1; n > 0; n--)
         {
-            n--;
+            int swapIndex = _random.Next(n + 1);
 
-            int i = _random.Next(n + 1);
-
-            string value = list[i];
-
-            list[i] = list[n];
-            list[n] = value;
+            (list[n], list[swapIndex]) = (list[swapIndex], list[n]);
         }
 
-        return list.Take(_random.Next(_subjects.Length));
+        return list.Take(_random.Next(_subjects.Length)).ToList();
     }
 
     private static DateTime getRandomDate(DateTime from, DateTime to)
