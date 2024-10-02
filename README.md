@@ -8,7 +8,6 @@ This is a .NET console application that serves as a playground to try out MongoD
   - [Documentation - Manual](https://www.mongodb.com/docs/manual)
   - [C# driver documentation](https://www.mongodb.com/docs/drivers/csharp/current)
   - [.NET Driver API Documentation](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/index.html) *- [IMongoCollection](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.IMongoCollection-1.html), [IFindFluent](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.IFindFluent-2.html), [IMongoQueryable](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.Linq.IMongoQueryable-1.html)*
-
 - [Dealing with DateTime](https://danielwertheim.se/mongodb-csharp-and-datetimes) 📓*Daniel Wertheim*
 
 ## In the example you can find
