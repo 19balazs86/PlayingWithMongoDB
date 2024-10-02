@@ -2,14 +2,16 @@
 
 This is a .NET console application that serves as a playground to try out MongoDB.
 
-#### Resources
+## Resources
 
-- [MongoDB - Manual](https://docs.mongodb.com/manual) 📓*MongoDB*
-- [MongoDB C# Driver and Documentation](http://mongodb.github.io/mongo-csharp-driver) 📓*MongoDB - Installing MongoDB.Driver package, you will get the MongoDB.Driver.Core and the MongoDB.Bson*
-- [.NET Driver API Documentation](http://mongodb.github.io/mongo-csharp-driver/2.19/apidocs/html/R_Project_CSharpDriverDocs.htm) 📓*MongoDB -  [IMongoCollection](http://mongodb.github.io/mongo-csharp-driver/2.19/apidocs/html/T_MongoDB_Driver_IMongoCollection_1.htm), [IFindFluent](http://mongodb.github.io/mongo-csharp-driver/2.19/apidocs/html/T_MongoDB_Driver_IFindFluent_2.htm), [IMongoQueryable](http://mongodb.github.io/mongo-csharp-driver/2.19/apidocs/html/T_MongoDB_Driver_Linq_IMongoQueryable_1.htm)*
+- MongoDB - Official 📓
+  - [Documentation - Manual](https://www.mongodb.com/docs/manual)
+  - [C# driver documentation](https://www.mongodb.com/docs/drivers/csharp/current)
+  - [.NET Driver API Documentation](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/index.html) *- [IMongoCollection](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.IMongoCollection-1.html), [IFindFluent](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.IFindFluent-2.html), [IMongoQueryable](https://mongodb.github.io/mongo-csharp-driver/2.29.0/api/MongoDB.Driver/MongoDB.Driver.Linq.IMongoQueryable-1.html)*
+
 - [Dealing with DateTime](https://danielwertheim.se/mongodb-csharp-and-datetimes) 📓*Daniel Wertheim*
 
-#### In the example you can find
+## In the example you can find
 - Repository with CRUD operations and example of using it
 - Pagination solution with `PageResult` and `PageQuery` object
 
@@ -30,8 +32,8 @@ PageQuery<Student, StudentDto> pageQuery = PageQuery<Student, StudentDto>
 PageResult<StudentDto> students = await repository.BrowseAsync(pageQuery);
 ```
 
-#### Get MongoDB server
+#### MongoDB server
 
 - [Community Server](https://www.mongodb.com/download-center/community) 📓*MongoDB*
-- [From docker hub](https://hub.docker.com/_/mongo)
+- [Docker hub](https://hub.docker.com/_/mongo)
 - [Create MongoDB in the Cloud with Atlas](https://www.youtube.com/watch?v=KKyag6t98g8) 📽️*15min - Traversy Media (Brad)*
