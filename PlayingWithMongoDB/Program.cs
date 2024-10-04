@@ -20,12 +20,15 @@ public static class Program
             ConventionRegistry.Register("Conventions", new MongoDbConventions(), _ => true);
 
             var mongoClient = new MongoClient(connectionString);
+
+            // Database is created if NOT exist
             IMongoDatabase database = mongoClient.GetDatabase("TestDB");
 
             // Put a break point here and F10.
             // --> Drop: Collection.
             database.DropCollection(collectionName);
 
+            // Collection is created if NOT exist
             IMongoCollection<Student> collection = database.GetCollection<Student>(collectionName);
 
             IStudentRepository repository = new StudentRepository(collection);
