@@ -13,7 +13,7 @@ public static class Program
     {
         try
         {
-            const string collectionName = "TestCollection";
+            const string collectionName = "Students";
             string connectionString     = Environment.GetEnvironmentVariable("CUSTOMCONNSTR_MongoDB");
             //string connectionString   = "mongodb://admin:admin@localhost:27017";
 
@@ -34,9 +34,9 @@ public static class Program
             IStudentRepository repository = new StudentRepository(collection);
 
             // --> Seed.
-            await repository.InsertAsync(Student.GenerateStudents(100));
+            await repository.InsertAsync(DataGenerator.ForStudent.Generate(100));
 
-            Student student = Student.GenerateStudent();
+            Student student = DataGenerator.ForStudent.Create();
 
             ReplaceOneResult updateOrInsertResult = await repository.UpdateOrInsertAsync(student, true);
             // updateOrInsertResult.UpsertedId.AsString // It has a value, in case of insert.
