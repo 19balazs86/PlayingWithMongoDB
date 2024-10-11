@@ -19,6 +19,10 @@ public static class Program
         // Database is created if NOT exist
         IMongoDatabase database = mongoClient.GetDatabase("TestDB");
 
+        // --> Example: CRUD
         await StudentExample.Run(database);
+
+        // --> Example: Time series
+        await TimeSeriesExample.Run(database);
     }
 }

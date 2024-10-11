@@ -1,4 +1,5 @@
 ﻿namespace PlayingWithMongoDB.Model;
+
 public static class DataGenerator
 {
     public static class ForStudent
@@ -70,6 +71,55 @@ public static class DataGenerator
             }
 
             return age;
+        }
+    }
+
+    public static class ForTemperature
+    {
+        // Records: 1,758
+        public static List<TemperatureReport> Generate()
+        {
+            string[] devices = ["Device01", "Device02", "Device03"];
+
+            List<TemperatureReport> readings = [];
+
+            DateTime now   = DateTime.Today;
+            DateTime start = now.AddMonths(-4);
+
+            TimeSpan timeInterval = TimeSpan.FromMinutes(60 * 5); // Every (X ± jitter) minutes create a TemperatureRecord
+
+            var (minC, maxC) = (-10.0, 30.0);
+
+            foreach (string deviceId in devices)
+            {
+                DateTime currentTime = start;
+
+                while (currentTime <= now)
+                {
+                    TimeSpan jitter = TimeSpan.FromSeconds(Random.Shared.Next(-15, 16)); // Time jitter of ±15 seconds
+
+                    DateTime timestampWithJitter = currentTime.Add(jitter);
+
+                    double temperature = generateTemperature(minC, maxC);
+
+                    readings.Add(new TemperatureReport
+                    {
+                        Id          = Guid.NewGuid(),
+                        DeviceId    = deviceId,
+                        Timestamp   = timestampWithJitter,
+                        Temperature = temperature
+                    });
+
+                    currentTime = currentTime.Add(timeInterval);
+                }
+            }
+
+            return readings;
+        }
+
+        private static double generateTemperature(double min, double max)
+        {
+            return Math.Round(min + (Random.Shared.NextDouble() * (max - min)), 2);
         }
     }
 }

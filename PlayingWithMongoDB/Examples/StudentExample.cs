@@ -4,6 +4,7 @@ using PlayingWithMongoDB.Repository;
 using PlayingWithMongoDB.Types;
 
 namespace PlayingWithMongoDB.Examples;
+
 public static class StudentExample
 {
     private const string _collectionName = "Students";
