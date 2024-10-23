@@ -12,7 +12,7 @@ public static class Program
 
     public static async Task Main(string[] args)
     {
-        ConventionRegistry.Register("Conventions", new MongoDbConventions(), _ => true);
+        ConventionRegistry.Register("Conventions", MongoDbConventions.Create(), _ => true);
 
         var mongoClient = new MongoClient(_connectionString);
 
